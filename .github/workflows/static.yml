@@ -44,7 +44,7 @@ jobs:
           cache: true
       - run: flutter --version
       - run: flutter pub get
-      - run: flutter build web --web-renderer html --base-href /${{ steps.version.outputs.repository }}/
+      - run: flutter build web --web-renderer html --base-href /${{ steps.version.outputs.repository }}/ --dart-define=OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact

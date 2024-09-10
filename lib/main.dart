@@ -20,7 +20,7 @@ const contentTypePrompt =
     '次のテキストをイベント,生活,市政,交通,文化の1カテゴリに必ず分類して、不要な記号はつけずにカテゴリ名のみ返してください。';
 
 Future<void> main() async {
-  await dotenv.load(fileName: ".env"); //ここを追加
+  // await dotenv.load(fileName: ".env"); //ここを追加
   runApp(const MyApp());
 }
 
@@ -77,7 +77,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
   //テキストを要約した文字列を返す
   Future<String> chatGptRequest(String text, String prompt) async {
-    String? apiKey = dotenv.env['OPENAI_API_KEY'];
+    // デプロイ用にGithubSecretから環境変数を読み込む
+    String? apiKey = const String.fromEnvironment('OPENAI_API_KEY');
+    // 開発用の場合、.envから環境変数を読み込む;
+    // String? apiKey = dotenv.env['OPENAI_API_KEY'];
     final response = await http.post(
       Uri.parse('https://api.openai.com/v1/chat/completions'),
       headers: {
