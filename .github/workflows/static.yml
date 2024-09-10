@@ -56,4 +56,4 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
       - name: Inject API key into environment
-        run: echo "API_KEY=${{ secrets.OPENAI_API_KEY }}" >> $GITHUB_ENV
+        run: echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> $GITHUB_ENV
