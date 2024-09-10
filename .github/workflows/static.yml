@@ -39,8 +39,8 @@ jobs:
       - name: Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.19.6'
-          channel: 'stable'
+          flutter-version: "3.19.6"
+          channel: "stable"
           cache: true
       - run: flutter --version
       - run: flutter pub get
@@ -51,8 +51,9 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload entire repository
-          path: './build/web'
+          path: "./build/web"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
+      - name: Inject API key into environment
+        run: echo "API_KEY=${{ secrets.OPENAI_API_KEY }}" >> $GITHUB_ENV

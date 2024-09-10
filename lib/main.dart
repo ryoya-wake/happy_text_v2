@@ -77,7 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   //テキストを要約した文字列を返す
   Future<String> chatGptRequest(String text, String prompt) async {
-    String? apiKey = dotenv.env['API_KEY'];
+    String? apiKey = dotenv.env['OPENAI_API_KEY'];
     final response = await http.post(
       Uri.parse('https://api.openai.com/v1/chat/completions'),
       headers: {
